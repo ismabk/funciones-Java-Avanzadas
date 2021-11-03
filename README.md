@@ -1,7 +1,10 @@
 # Funciones JS Avanzadas
-
-![](https://3con14.biz/js/_data/_config/js.png)
-
+<p align="center">
+  <img
+		width="200"
+		alt="js"
+		src="https://3con14.biz/js/_data/_config/js.png">
+<p>
 #### Proyecto realizado durante el curso de 4geeks.
 
 Proyecto que reuna la realización de las siguientes funciones en JS:
