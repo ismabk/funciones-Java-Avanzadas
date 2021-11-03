@@ -13,13 +13,19 @@ function clearArray (arr){
     } 
     return newArr;
 }
+//Funcion para sumar los numeros de un array
+function sumArray(array){
+    let result=0;
+    for(let i in array){
+        result += array[i];
+    }
+    return result;
+}
 //Funcion que calcula le media aritmetica del array
 function averageArry(array){
     let arr= clearArray(array)
     let result=0;
-    for(let i in arr){
-        result += arr[i]
-    }
+    result=sumArray(arr);
     return result/arr.length;
 }
 //Funcion separa letra de los numeros del DNI
@@ -39,43 +45,13 @@ function calculateDNI(dni){
             return `La letra del DNI ${dni} es correcta`
         }
         else return `La letra del DNI no es correcta, deberia ser ${letrasDNI[dniNumber%23]}`
-      
     }
 }
 //Funcion para ordenar de menor a mayor el array
-// function merge (left, right){
-//     const arrFinal = []
-  
-//     while (left.length && right.length) {
-//       arrFinal.push(left[0] > right[0] ? right.shift() : left.shift())
-//     }
-//     while (left.length) {
-//       arrFinal.push(left.shift())
-//     }
-//     while (right.length) {
-//       arrFinal.push(right.shift())
-//     }
-  
-//     return arrFinal
-// }
-  
-// function mergeSort (array) {
-//     let arr = clearArray(array)
-//     if (arr.length < 2) return arr
-//     const middle = Math.floor(arr.length / 2)
-//     const arr_l = arr.slice(0, middle)
-//     const arr_r = arr.slice(middle, arr.length)
-//     const sorted_l = mergeSort(arr_l)
-//     const sorted_r = mergeSort(arr_r)
-//     return merge(sorted_l, sorted_r)
-// }
-
-//Funcion para ordenar de menor a mayor el array
 function merge (left, right, type){
     const arrFinal = []
-  
     while (left.length && right.length) {
-      arrFinal.push(type == '<' ? (left[0] > right[0] ? right.shift() : left.shift()) : ( left[0] < right[0] ? right.shift() : left.shift()))
+      arrFinal.push(type === '<' ? (left[0] > right[0] ? right.shift() : left.shift()) : ( left[0] < right[0] ? right.shift() : left.shift()))
     }
     while (left.length) {
       arrFinal.push(left.shift())
@@ -83,19 +59,20 @@ function merge (left, right, type){
     while (right.length) {
       arrFinal.push(right.shift())
     }
-  
-    return arrFinal
+    return arrFinal;
 }
-  
 function mergeSort (array, type) {
     let arr = clearArray(array)
     if (arr.length < 2) return arr
     const middle = Math.floor(arr.length / 2)
     const arr_l = arr.slice(0, middle)
     const arr_r = arr.slice(middle, arr.length)
-    const sorted_l = mergeSort(arr_l)
-    const sorted_r = mergeSort(arr_r)
+    const sorted_l = mergeSort(arr_l,type)
+    const sorted_r = mergeSort(arr_r,type)
     return merge(sorted_l, sorted_r,type)
 }
 
-console.log(mergeSort(sequence, '>'))
+console.log(averageArry(sequence))
+// console.log(calculateDNI('30245712E'))
+// console.log(mergeSort(sequence, '<'))
+// console.log(mergeSort(sequence, '>'))
